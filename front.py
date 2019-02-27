@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 import back
 
 class Application(tk.Frame):
@@ -40,10 +41,16 @@ class Application(tk.Frame):
         self.studentsAndClassroomsBox.grid(row=3, column=0, columnspan=2)
 
         #Przycisk wyjścia
-        self.quitButton = tk.Button(self, text = "Quit", command = lambda: self.quit_application())
+        self.quitButton = tk.Button(self, text = "Quit", command = lambda: self.display_quit_prompt())
         self.quitButton.grid(row=4, column=0, columnspan=2)
     
-    def quit_application(self):
+    def display_quit_prompt(self):
+        result = messagebox.askokcancel(title="Quit application", message="Are you sure to quit application?",
+         default=messagebox.OK)
+
+        if not result:
+            return
+
         back.close_cur_and_conn()
         self.quit()
 
