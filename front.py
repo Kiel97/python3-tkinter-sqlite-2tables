@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+from tkinter import ttk
 import back
 
 class Application(tk.Frame):
@@ -39,6 +40,11 @@ class Application(tk.Frame):
         
         self.studentsAndClassroomsBox = tk.Listbox(self, listvariable=self.studentsAndClassroomsList)
         self.studentsAndClassroomsBox.grid(row=3, column=0, columnspan=2)
+
+        # Combobox z nazwami klas
+        self.availableClassrooms = ttk.Combobox(self, values=back.get_classroom_names())
+        self.availableClassrooms.current(0)
+        self.availableClassrooms.grid(row=5, column=0, columnspan=2)
 
         #Przycisk wyjścia
         self.quitButton = tk.Button(self, text = "Quit", command = lambda: self.display_quit_prompt())

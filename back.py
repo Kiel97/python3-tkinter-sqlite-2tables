@@ -31,6 +31,13 @@ def get_students_and_their_classrooms():
     """)
     return list(cur.fetchall())
 
+def get_classroom_names():
+    cur.execute("""
+        SELECT classroom_name
+        FROM Classroom
+    """)
+    return list(cur.fetchall())
+
 def close_cur_and_conn():
     cur.close()
     conn.close()
